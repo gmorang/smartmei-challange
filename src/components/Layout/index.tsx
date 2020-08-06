@@ -28,7 +28,7 @@ const Layout: React.FC<Props> = ({ component: Component, ...restProps }) => {
 
     },
     typography: {
-      fontFamily: 'Poppins, san-serif',
+      fontFamily: 'Roboto, san-serif',
     },
     shadows: ['none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none'],
     shape: { borderRadius: 0 },

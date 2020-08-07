@@ -68,7 +68,9 @@ const Layout: React.FC<Props> = ({ component: Component, ...restProps }) => {
   return (
     <MuiThemeProvider theme={theme}>
       <Header />
-      <Component {...restProps} />
+      <div style={{ marginTop: 64 }}>
+        <Component {...restProps} />
+      </div>
     </MuiThemeProvider>
   );
 }

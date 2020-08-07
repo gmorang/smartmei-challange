@@ -23,6 +23,7 @@ const ListJobs: React.FC = () => {
           key={job.id}
           title={job.title}
           isFeautured={job.isFeatured}
+          description={job.description}
         />
       ))}
     </div>

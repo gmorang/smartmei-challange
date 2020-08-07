@@ -5,4 +5,8 @@ export interface Job {
   userEmail: string,
   isFeatured: boolean,
   isPublished: boolean,
+  description: string,
+  applyUrl: string,
+  postedAt: Date,
+  createdAt: Date
 }

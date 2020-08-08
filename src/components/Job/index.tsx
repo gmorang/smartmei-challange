@@ -7,6 +7,7 @@ import QueryBuilderIcon from '@material-ui/icons/QueryBuilder';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 
 import { formatDistance } from 'date-fns';
+import { Form } from '@unform/web';
 
 import Tag from '../Tag';
 import Modal from '../Modal';
@@ -113,7 +114,9 @@ const JobITem: React.FC<Props> = ({ title, description, slug, postedAt, location
         buttonSecondary="Cancel"
         title={title}
       >
-        <ModalContent locationNames={locationNames} postedAt={postedAt} description={description} />
+        <Form onSubmit={(formData) => console.log(formData)}>
+          <ModalContent locationNames={locationNames} postedAt={postedAt} description={description} />
+        </Form>
       </Modal>
     </Grid>
   )

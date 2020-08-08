@@ -17,15 +17,21 @@ const ListJobs: React.FC = () => {
   if (error) return <p>Error :(</p>;
 
   return (
-    <div>
-      {data && data.jobs?.map((job) => (
-        <JobITem
-          key={job.id}
-          title={job.title}
-          isFeautured={job.isFeatured}
-          description={job.description}
-        />
-      ))}
+    <div style={{ padding: 24 }}>
+      {data && data.jobs?.map((job) => {
+        console.log(job);
+        return (
+          <JobITem
+            key={job.id}
+            title={job.title}
+            isFeautured={job.isFeatured}
+            description={job.description}
+            slug={job.slug}
+            postedAt={job.postedAt}
+            locationNames={job.locationNames}
+          />
+        )
+      })}
     </div>
   );
 }

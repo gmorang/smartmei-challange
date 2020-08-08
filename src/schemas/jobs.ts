@@ -10,6 +10,8 @@ export const LIST_JOBS = gql`
       isPublished
       userEmail
       description
+      slug
+      postedAt
       remotes {
         name
         type

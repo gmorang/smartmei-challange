@@ -30,7 +30,6 @@ const Layout: React.FC<Props> = ({ component: Component, ...restProps }) => {
     typography: {
       fontFamily: 'Roboto, san-serif',
     },
-    shadows: ['none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none'],
     shape: { borderRadius: 0 },
     overrides: {
       MuiAppBar: {

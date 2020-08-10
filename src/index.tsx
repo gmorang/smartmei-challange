@@ -6,6 +6,8 @@ import { ApolloProvider } from '@apollo/client';
 import Router from './routes';
 import client from './services/grapqhl';
 
+import 'react-toastify/dist/ReactToastify.css';
+
 ReactDOM.render(
   <React.StrictMode>
     <ApolloProvider client={client}>

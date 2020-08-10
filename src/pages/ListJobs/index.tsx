@@ -5,6 +5,7 @@ import Pagination from '@material-ui/lab/Pagination';
 import schemas from '../../schemas';
 import JobITem from '../../components/Job';
 import { Job } from '../../@types';
+import Spinner from '../../components/Spinner';
 
 interface Data {
   jobs?: Job[];
@@ -41,7 +42,7 @@ const ListJobs: React.FC = () => {
     setPagination();
   }, [data, total, limit])
 
-  if (loading) return <p>loading...</p>;
+  if (loading) return <Spinner />;
   if (error) return <p>Error :(</p>;
 
   return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Typography, makeStyles, CircularProgress } from '@material-ui/core';
+import { Grid, Typography, makeStyles } from '@material-ui/core';
 import ReactMarkdown from 'react-markdown';
 
 import QueryBuilderIcon from '@material-ui/icons/QueryBuilder';
@@ -10,6 +10,7 @@ import FormTextField from '../Form/TextField';
 import { useQuery } from '@apollo/client';
 import { Job } from '../../@types';
 import { GET_JOB } from '../../schemas/jobs';
+import Spinner from '../Spinner';
 
 interface Props {
   jobSlug: string;
@@ -45,7 +46,7 @@ const ModalContent: React.FC<Props> = ({ companySlug, jobSlug }) => {
     return formatDistance(postDate, Date.now())
   }
 
-  return loading ? <CircularProgress color="primary" size={50} /> : (
+  return loading ? <Spinner /> : (
     <Grid item>
       <Grid container direction="row" spacing={2}>
         <Grid item>

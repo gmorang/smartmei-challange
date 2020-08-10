@@ -1,6 +1,8 @@
 import React from 'react';
 
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
+import { ToastContainer } from 'react-toastify';
+
 
 import grey from '@material-ui/core/colors/grey';
 import red from '@material-ui/core/colors/red';
@@ -67,6 +69,7 @@ const Layout: React.FC<Props> = ({ component: Component, ...restProps }) => {
   return (
     <MuiThemeProvider theme={theme}>
       <Header />
+      <ToastContainer />
       <div style={{ marginTop: 80 }}>
         <Component {...restProps} />
       </div>

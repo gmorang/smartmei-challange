@@ -13,6 +13,7 @@ import Tag from '../Tag';
 import Modal from '../Modal';
 import ModalContent from './ModalContent';
 import { APPLY_JOB } from '../../schemas/jobs';
+import { toast } from 'react-toastify';
 interface Props {
   id: string;
   title: string;
@@ -60,7 +61,16 @@ const JobITem: React.FC<Props> = ({ title, description, slug, postedAt, location
   const [subscribe, { loading, error }] = useMutation(APPLY_JOB);
 
   async function onSubmit(formData: any) {
-    subscribe({ variables: formData, });
+    const apply = await subscribe({ variables: formData, });
+
+    if (error) {
+      toast('Sorry, try again', { type: 'warning' })
+    }
+
+    toast('successfully subscribed', { type: 'success' })
+    setVisible(false);
+
+    return apply;
   }
 
   return (

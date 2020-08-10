@@ -10,7 +10,7 @@ interface Props {
 
 const FormTextField: React.FC<Props> = ({ name, placeholder, type }) => {
   const inputRef = useRef(null);
-  const { fieldName, defaultValue, registerField, error } = useField(name);
+  const { fieldName, defaultValue, registerField } = useField(name);
 
   useEffect(() => {
     registerField({

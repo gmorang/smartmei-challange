@@ -53,6 +53,7 @@ const ListJobs: React.FC = () => {
       {currentJobs && currentJobs?.map((job) => {
         return (
           <JobITem
+            id={job.id}
             key={job.id}
             title={job.title}
             isFeautured={job.isFeatured}
@@ -60,6 +61,7 @@ const ListJobs: React.FC = () => {
             slug={job.slug}
             postedAt={job.postedAt}
             locationNames={job.locationNames}
+            companySlug={job.company.slug}
           />
         )
       })}

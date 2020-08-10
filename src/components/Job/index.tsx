@@ -7,19 +7,21 @@ import QueryBuilderIcon from '@material-ui/icons/QueryBuilder';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 
 import { formatDistance } from 'date-fns';
-import { Form } from '@unform/web';
+import { useMutation } from '@apollo/client';
 
 import Tag from '../Tag';
 import Modal from '../Modal';
 import ModalContent from './ModalContent';
-
+import { APPLY_JOB } from '../../schemas/jobs';
 interface Props {
+  id: string;
   title: string;
   isFeautured: boolean;
   description: string;
   slug: string;
   postedAt: Date;
   locationNames: string;
+  companySlug: string;
 }
 
 const useStyles = makeStyles({
@@ -50,11 +52,16 @@ const useStyles = makeStyles({
   }
 });
 
-const JobITem: React.FC<Props> = ({ title, description, slug, postedAt, locationNames }) => {
+const JobITem: React.FC<Props> = ({ title, description, slug, postedAt, locationNames, companySlug }) => {
   const [isVisible, setVisible] = React.useState(false);
   const classes = useStyles();
   const tags = slug.split('-');
   const postDate = new Date(postedAt);
+  const [subscribe, { loading, error }] = useMutation(APPLY_JOB);
+
+  async function onSubmit(formData: any) {
+    subscribe({ variables: formData, });
+  }
 
   return (
     <Grid className={classes.container} item xs={12} sm={12} lg={12}>
@@ -113,10 +120,10 @@ const JobITem: React.FC<Props> = ({ title, description, slug, postedAt, location
         buttonPrimary="Apply"
         buttonSecondary="Cancel"
         title={title}
+        onSubmit={onSubmit}
+        isLoading={loading}
       >
-        <Form onSubmit={(formData) => console.log(formData)}>
-          <ModalContent locationNames={locationNames} postedAt={postedAt} description={description} />
-        </Form>
+        <ModalContent jobSlug={slug} companySlug={companySlug} />
       </Modal>
     </Grid>
   )

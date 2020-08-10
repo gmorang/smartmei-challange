@@ -3,7 +3,8 @@ import React from 'react';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 
-import { DialogTitle, makeStyles, DialogActions, Button } from '@material-ui/core';
+import { DialogTitle, makeStyles, DialogActions, Button, CircularProgress } from '@material-ui/core';
+import { Form } from '@unform/web';
 
 interface Props {
   title?: string;
@@ -12,6 +13,7 @@ interface Props {
   onSubmit?: any;
   buttonPrimary?: string;
   buttonSecondary?: string;
+  isLoading: boolean;
 };
 
 const useStyles = makeStyles({
@@ -41,7 +43,7 @@ const useStyles = makeStyles({
       flex: 1,
       justifyContent: 'center',
     },
-  }
+  },
 });
 
 const Modal: React.FC<Props> = ({
@@ -51,22 +53,31 @@ const Modal: React.FC<Props> = ({
   onSubmit,
   buttonPrimary,
   buttonSecondary,
-  children
+  children,
+  isLoading
 }) => {
   const classes = useStyles();
 
   return (
     <Dialog PaperProps={{ className: classes.modal }} fullWidth maxWidth="sm" open={isVisible} onClose={toggle}>
-      {title && <DialogTitle>{title}</DialogTitle>}
-      <DialogContent>
-        {children}
-      </DialogContent>
+      <Form onSubmit={onSubmit}>
+        {title && <DialogTitle>{title}</DialogTitle>}
+        <DialogContent>
+          {children}
+        </DialogContent>
 
-      <DialogActions>
-        <Button onClick={toggle} variant="outlined" color="primary">{buttonSecondary}</Button>
+        <DialogActions>
+          <Button onClick={toggle} variant="outlined" color="primary">{buttonSecondary}</Button>
 
-        <Button onClick={onSubmit} variant="contained" color="primary">{buttonPrimary}</Button>
-      </DialogActions>
+          <Button
+            variant="contained"
+            color="primary"
+            type="submit"
+          >
+            {isLoading ? <CircularProgress color="secondary" size={22} /> : buttonPrimary}
+          </Button>
+        </DialogActions>
+      </Form>
     </Dialog>
   );
 }

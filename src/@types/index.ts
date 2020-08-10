@@ -1,3 +1,6 @@
+export interface Company {
+  slug: string;
+}
 export interface Job {
   id: string;
   locationNames: string;
@@ -10,4 +13,5 @@ export interface Job {
   postedAt: Date;
   createdAt: Date;
   slug: string;
+  company: Company;
 }
